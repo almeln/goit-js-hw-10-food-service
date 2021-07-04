@@ -1,8 +1,12 @@
+import './sass/main.scss';
 import menu from './menu.json';
+import { refs } from './js-utils/refs';
 import eventsTemplate from './templates/menu-items.hbs';
+import { onCheckboxChange } from './js-utils/theme';
+import { onCurrentTheme } from './js-utils/theme';
 
-// import './sass/main.scss';
+refs.menu.innerHTML = eventsTemplate(menu);
 
-const mainMenu = document.querySelector('.js-menu');
-mainMenu.innerHTML = eventsTemplate(menu);
+onCurrentTheme();
 
+refs.switcher.addEventListener('change', onCheckboxChange);
